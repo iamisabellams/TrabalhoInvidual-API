@@ -87,7 +87,7 @@ No terminal, dentro da pasta do projeto:
 ## Executar a Aplicação
 Opção 1 - Via Maven:
 ```
-mvn spring-boot:run
+    mvn spring-boot:run
 ```
 
 Execute a classe MAIN
@@ -95,5 +95,5 @@ Execute a classe MAIN
 
 ## Acessar a API
 ```
-Aplicação: http://localhost:8082
+    Aplicação: http://localhost:8082
 ```
