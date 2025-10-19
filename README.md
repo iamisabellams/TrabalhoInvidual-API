@@ -53,7 +53,6 @@ Siga **todos** os passos abaixo para configurar e executar o projeto localmente.
     ```sql
     CREATE DATABASE serratec_music;
     ```
-    *(Se você viu um print com o nome `postgres`, ignore. O nome correto que a aplicação está configurada para usar é `serratec_music`)*.
 
 ---
 
@@ -66,97 +65,35 @@ Siga **todos** os passos abaixo para configurar e executar o projeto localmente.
 5.  **Verifique** se o arquivo `application.properties` está idêntico a este (mudando apenas seu usuário e senha):
 
     ```properties
-    # Nome da aplicação
     spring.application.name=serratec-music
-
-    # --- Configuração do Banco de Dados ---
-    # Garanta que o nome do banco é 'serratec_music'
     spring.datasource.url=jdbc:postgresql://localhost:5432/serratec_music
-
-    # !!! MUDE O USUÁRIO E SENHA ABAIXO !!!
     spring.datasource.username=postgres
     spring.datasource.password=123456
-
-    # --- Configuração do JPA / Hibernate ---
-    # (Cria/atualiza as tabelas automaticamente ao ligar)
     spring.jpa.hibernate.ddl-auto=update
     spring.jpa.show-sql=true
     spring.jpa.properties.hibernate.format_sql=true
-
-    # --- Porta do Servidor ---
-    # (Usamos 8082 para evitar conflitos com a porta 8080)
+    # (Usei 8082 para evitar conflitos com a porta 8080)
     server.port=8082
     ```
-
 ---
 
-### Passo 3: O "Reset" do Eclipse (Passo CRÍTICO de Desafio)
+### Instalar Dependências
+No terminal, dentro da pasta do projeto:
 
-O Eclipse/STS pode ficar "preso" em cache antigo ou em modo "Offline". Se o projeto apresentar erros (como `Found 0 JPA repository interfaces` ou `Downloading external resources is disabled`), **siga estes 4 sub-passos**:
+```
+    mvn clean install
+```
 
-1.  **Desativar o Modo Offline:**
-    * No Eclipse, vá em **Window -> Preferences**.
-    * Na busca, digite `Maven`.
-    * Clique na **palavra "Maven"** (não nas sub-pastas).
-    * **DESMARQUE** a caixa de seleção **"Offline"**.
-    * Clique em "Apply and Close".
+## Executar a Aplicação
+Opção 1 - Via Maven:
+```
+mvn spring-boot:run
+```
 
-2.  **Deletar o Cache Antigo (Pasta `target`):**
-    * Feche o Eclipse.
-    * Vá até a pasta do projeto no Windows Explorer (ex: `C:\.../serratec-music/`).
-    * Delete a pasta `target` manualmente.
+Execute a classe MAIN
 
-3.  **Forçar a Atualização do Maven:**
-    * Abra o Eclipse novamente.
-    * Clique com o **botão direito** no projeto (`serratec-music`) na árvore de arquivos.
-    * Vá em **Maven -> Update Project...**.
-    * **MARQUE** a caixa **"Force Update of Snapshots/Releases"**.
-    * Clique em **OK** (e espere ele baixar as dependências - isso pode levar um minuto).
 
-4.  **Limpar o Projeto (Clean):**
-    * No menu superior do Eclipse, vá em **Project -> Clean...**.
-    * Selecione seu projeto e clique em **Clean**.
-
----
-
-### Passo 4: Executar a Aplicação
-
-Depois de seguir os passos 1, 2 e 3:
-
-1.  Encontre o arquivo `SerratecMusicApplication.java` (em `src/main/java/com/serratec/serratec_music/`).
-2.  Clique com o **botão direito** nele.
-3.  Vá em **Run As -> Java Application**.
-
-### Verificando o Sucesso
-
-Observe o Console. A aplicação iniciou com sucesso se você vir estas 3 linhas (sem nenhum `ERROR` no final):
-1.  `... Finished Spring Data repository scanning in ... ms. Found 5 JPA repository interfaces.`
-2.  `... HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection...`
-3.  `... Tomcat started on port 8082 (http)`
-
----
-
-## 4. Acessando a API
-
-Sua API está no ar e pronta para ser testada.
-
-### 1. Documentação Swagger (Recomendado)
-
-Para ver e testar todos os endpoints de forma interativa, acesse o Swagger UI no seu navegador (note a porta **8082**):
-
-➡️ **`http://localhost:8082/swagger-ui.html`**
-
-### 2. Teste via Postman
-
-* **`GET` http://localhost:8082/artistas**
-    * *Resultado esperado:* Um status `200 OK` e uma lista vazia `[ ]`.
-
-* **`POST` http://localhost:8082/artistas**
-    * *Body (em modo `raw` e `JSON`):*
-        ```json
-        {
-            "nome": "Renato Russo",
-            "nacionalidade": "Brasileiro"
-        }
-        ```
-    * *Resultado esperado:* Um status `201 Created` e o JSON do artista criado com o ID.
+## Acessar a API
+```
+Aplicação: http://localhost:8082
+```
