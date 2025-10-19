@@ -1,13 +1,12 @@
 # API Serratec Music
 
 **Autor:** Isabella Medeiros
-*(Baseado no seu workspace do Postman. Por favor, altere se estiver incorreto!)*
 
 ---
 
 ## 1. Descrição do Projeto
 
-API RESTful desenvolvida como projeto final para a disciplina de API REST do curso de Desenvolvedor Full Stack do Serratec.
+API RESTful desenvolvida como projeto para a disciplina de API do curso do Serratec.
 
 O projeto simula o backend de uma plataforma de streaming de música, permitindo o gerenciamento completo (CRUD) de Usuários (com seus Perfis), Artistas, Músicas e Playlists. A API também implementa os desafios de lógica de negócio, como a criação de playlists associadas a usuários e a adição de músicas a uma playlist.
 
